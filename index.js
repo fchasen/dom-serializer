@@ -133,7 +133,12 @@ function renderTag(elem, opts) {
   
   if (opts.xmlMode && singleTag[elem.name]) {
     tag += '/>';
-    console.log("render:", elem.name, singleTag[elem.name], tag)
+    
+    if(elem.children && elem.children.length > 0) {
+      tag += render(elem.children, opts);
+      console.log("render:", elem.name, elem.children.length, tag)
+    }
+    
   } else {
     tag += '>';
     
