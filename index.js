@@ -131,24 +131,26 @@ function renderTag(elem, opts) {
     tag += ' ' + attribs;
   }
   
-  if (opts.xmlMode && singleTag[elem.name]) {
+  if(opts.xhtmlMode && singleTag[elem.name]) {
     tag += '/>';
     
     if(elem.children && elem.children.length > 0) {
       tag += render(elem.children, opts);
-      console.log("render:", elem.name, tag);
     }
-    
+  } else if (
+    opts.xmlMode &&
+    !opts.xhtmlMode &&
+    (!elem.children || elem.children.length === 0)
+  ) {
+    tag += '/>';
   } else {
     tag += '>';
-    
-    if(elem.children && elem.children.length > 0) {
-      tag += render(elem.children, opts);
+    tag += render(elem.children, opts);
+  
+    if (!singleTag[elem.name] || opts.xmlMode) {
+      tag += '</' + elem.name + '>';
     }
-
-    tag += '</' + elem.name + '>';
   }
-
 
 
   return tag;
