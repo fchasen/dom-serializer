@@ -136,7 +136,7 @@ function renderTag(elem, opts) {
     
     if(elem.children && elem.children.length > 0) {
       tag += render(elem.children, opts);
-      console.log("render:", elem.name, elem.children.length, tag);
+      console.log("render:", elem.name, tag);
     }
     
   } else {
