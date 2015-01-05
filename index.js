@@ -130,19 +130,17 @@ function renderTag(elem, opts) {
   if (attribs) {
     tag += ' ' + attribs;
   }
-
-  if (
-    opts.xmlMode &&
-    (!elem.children || elem.children.length === 0)
-  ) {
+  console.log("render:", elem, opts)
+  if (opts.xmlMode && singleTag[elem.name]) {
     tag += '/>';
   } else {
     tag += '>';
-    tag += render(elem.children, opts);
-
-    if (!singleTag[elem.name] || opts.xmlMode) {
-      tag += '</' + elem.name + '>';
+    
+    if(elem.children && elem.children.length > 0) {
+      tag += render(elem.children, opts);
     }
+
+    tag += '</' + elem.name + '>';
   }
 
 
