@@ -130,9 +130,10 @@ function renderTag(elem, opts) {
   if (attribs) {
     tag += ' ' + attribs;
   }
-  console.log("render:", elem, opts)
+  
   if (opts.xmlMode && singleTag[elem.name]) {
     tag += '/>';
+    console.log("render:", elem, singleTag[elem.name], tag)
   } else {
     tag += '>';
     
