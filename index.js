@@ -131,12 +131,10 @@ function renderTag(elem, opts) {
     tag += ' ' + attribs;
   }
   
-  if(opts.xhtmlMode && singleTag[elem.name]) {
+  if(opts.xhtmlMode && 
+    singleTag[elem.name] &&
+    (!elem.children || elem.children.length === 0)) {
     tag += '/>';
-    
-    if(elem.children && elem.children.length > 0) {
-      tag += render(elem.children, opts);
-    }
   } else if (
     opts.xmlMode &&
     !opts.xhtmlMode &&
