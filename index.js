@@ -132,12 +132,9 @@ function renderTag(elem, opts) {
   }
   
   if(opts.xhtmlMode && 
-    singleTag[elem.name]) {
+    singleTag[elem.name] &&
+    (!elem.children || elem.children.length === 0)) {
     tag += '/>';
-    
-    if(elem.children && elem.children.length > 0) {
-      tag += render(elem.children, opts);
-    } 
   } else if (
     opts.xmlMode &&
     !opts.xhtmlMode &&
@@ -147,7 +144,7 @@ function renderTag(elem, opts) {
   } else {
     tag += '>';
     tag += render(elem.children, opts);
-
+  
     if (!singleTag[elem.name] || opts.xmlMode) {
       tag += '</' + elem.name + '>';
     }
