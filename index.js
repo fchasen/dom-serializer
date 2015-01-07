@@ -132,7 +132,7 @@ function renderTag(elem, opts) {
   }
   
   if(opts.xhtmlMode && 
-    singleTag[elem.name] {
+    singleTag[elem.name]) {
     tag += '/>';
     
     if(elem.children && elem.children.length > 0) {
